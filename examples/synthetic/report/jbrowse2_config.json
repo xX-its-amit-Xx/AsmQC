@@ -1,0 +1,80 @@
+{
+  "assemblies": [
+    {
+      "name": "example_bird_v1",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "example_bird_v1-ref",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "assembly.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "assembly.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "type": "FeatureTrack",
+      "trackId": "asmqc-flags",
+      "name": "AsmQC curation flags",
+      "category": [
+        "AsmQC"
+      ],
+      "assemblyNames": [
+        "example_bird_v1"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "flags.gff3",
+          "locationType": "UriLocation"
+        }
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "asmqc-flags-bed",
+      "name": "AsmQC curation flags (BED)",
+      "category": [
+        "AsmQC"
+      ],
+      "assemblyNames": [
+        "example_bird_v1"
+      ],
+      "adapter": {
+        "type": "BedAdapter",
+        "bedLocation": {
+          "uri": "flags.bed",
+          "locationType": "UriLocation"
+        }
+      }
+    }
+  ],
+  "defaultSession": {
+    "name": "AsmQC review",
+    "views": [
+      {
+        "type": "LinearGenomeView",
+        "tracks": [
+          {
+            "type": "FeatureTrack",
+            "configuration": "asmqc-flags",
+            "displays": [
+              {
+                "type": "LinearBasicDisplay",
+                "configuration": "asmqc-flags-LinearBasicDisplay"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

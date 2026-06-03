@@ -1,0 +1,11 @@
+Copies	kmer_multiplicity	Count
+read-only	1	29845
+read-only	2	10231
+1	1	152
+1	20	48000
+1	21	49000
+2	40	41200
+2	41	42000
+3	60	9087
+4	62	1200
+>4	80	512

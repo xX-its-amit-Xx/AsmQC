@@ -1,0 +1,16 @@
+# Normalise line endings to LF in the repo for cross-platform consistency.
+* text=auto eol=lf
+
+# Shell scripts MUST be LF (a CRLF shebang breaks bash on Linux/macOS).
+*.sh text eol=lf
+
+# Treat figures as binary.
+*.png binary
+
+# Bioinformatics text fixtures stay LF (tab-delimited / FASTA).
+*.fasta text eol=lf
+*.fa text eol=lf
+*.tsv text eol=lf
+*.qv text eol=lf
+*.stats text eol=lf
+*.hist text eol=lf

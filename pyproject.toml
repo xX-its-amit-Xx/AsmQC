@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "asmqc"
+version = "0.1.0"
+description = "Aggregate genome-assembly QC outputs into one interpretable report with automated curation flags"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "AsmQC contributors" }]
+keywords = [
+    "genomics",
+    "genome-assembly",
+    "quality-control",
+    "busco",
+    "merqury",
+    "quast",
+    "curation",
+    "bioinformatics",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "PyYAML>=5.3",
+    "matplotlib>=3.4",
+    "numpy>=1.20",
+]
+
+[project.optional-dependencies]
+# Faster / indexed FASTA access. AsmQC works without these (pure-Python fallback),
+# but installs them by default for performance and to honour the Biopython/pyfaidx spec.
+fasta = ["pyfaidx>=0.7", "biopython>=1.79"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "pyfaidx>=0.7",
+    "biopython>=1.79",
+]
+all = ["pyfaidx>=0.7", "biopython>=1.79"]
+
+[project.urls]
+Homepage = "https://github.com/example/asmqc"
+Repository = "https://github.com/example/asmqc"
+Documentation = "https://github.com/example/asmqc/tree/main/docs"
+Issues = "https://github.com/example/asmqc/issues"
+
+[project.scripts]
+asmqc = "asmqc.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+asmqc = ["data/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# pyflakes, pycodestyle, isort, pyupgrade, bugbear, comprehensions
+select = ["E", "F", "I", "UP", "B", "C4", "W"]
+ignore = [
+    "E501",   # line length handled by formatter; long URLs/strings tolerated
+    "B905",   # zip() strict= not available on 3.9
+    "UP031",  # %-format is clearer than .format() when building regex patterns
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E712"]
+
+[tool.coverage.run]
+source = ["asmqc"]
+branch = true

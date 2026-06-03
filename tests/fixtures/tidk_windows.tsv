@@ -1,0 +1,13 @@
+id	window	forward_repeat_number	reverse_repeat_number	telomeric_repeat
+chr1	10000	3	412	TTAGGG
+chr1	20000	0	0	TTAGGG
+chr1	30000	0	1	TTAGGG
+chr1	40000	0	0	TTAGGG
+chr1	50000	389	2	TTAGGG
+chr2	10000	0	370	TTAGGG
+chr2	20000	0	0	TTAGGG
+chr2	30000	1	0	TTAGGG
+chr2	40000	0	0	TTAGGG
+chr3	10000	2	1	TTAGGG
+chr3	20000	0	0	TTAGGG
+chr3	30000	0	3	TTAGGG

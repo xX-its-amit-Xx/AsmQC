@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: test (py${{ matrix.python-version }} / ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        include:
+          - os: macos-latest
+            python-version: "3.12"
+          - os: windows-latest
+            python-version: "3.12"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install package + dev deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Lint (ruff)
+        run: ruff check src tests
+
+      - name: Test (pytest + coverage)
+        run: pytest --cov=asmqc --cov-report=term-missing
+
+      - name: Smoke-test the CLI
+        run: |
+          asmqc version
+          asmqc init-config > /tmp/thresholds.yaml || asmqc init-config > thresholds.yaml
+          asmqc run --fasta tests/fixtures/tiny.fasta \
+            --busco tests/fixtures/busco_short_summary.txt \
+            --merqury tests/fixtures/merqury \
+            --tidk tests/fixtures/tidk_windows.tsv \
+            --contamination tests/fixtures/fcs_gx_report.txt \
+            --out ci_report --tracks --jbrowse --quiet
+        shell: bash

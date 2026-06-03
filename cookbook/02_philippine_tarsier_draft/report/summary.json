@@ -1,0 +1,218 @@
+{
+  "asmqc_version": "0.1.0",
+  "generated_at": "2026-06-03 06:42:23 UTC",
+  "assembly_name": "Carlito_syrichta_Tarsius_2.0.1 (GCA_000164805.2)",
+  "overall_status": "FLAG",
+  "flag_counts": {
+    "PASS": 0,
+    "INFO": 0,
+    "NOTE": 1,
+    "WARN": 4,
+    "FLAG": 1,
+    "FAIL": 0
+  },
+  "inputs": {
+    "gfastats": "cookbook/02_philippine_tarsier_draft/inputs/gfastats_summary.txt",
+    "busco": "cookbook/02_philippine_tarsier_draft/inputs/short_summary.specific.primates_odb10.txt"
+  },
+  "config": {
+    "enabled": {
+      "busco": true,
+      "merqury": true,
+      "contiguity": true,
+      "gaps": true,
+      "telomere": true,
+      "contamination": true
+    },
+    "busco": {
+      "complete_warn_pct": 95.0,
+      "complete_flag_pct": 90.0,
+      "duplicated_warn_pct": 5.0,
+      "duplicated_flag_pct": 10.0,
+      "missing_warn_pct": 5.0,
+      "fragmented_warn_pct": 5.0
+    },
+    "merqury": {
+      "qv_warn": 40.0,
+      "qv_flag": 30.0,
+      "completeness_warn_pct": 90.0
+    },
+    "contiguity": {
+      "scaffold_n50_warn_bp": 1000000,
+      "scaffold_n50_note_bp": 10000000,
+      "contig_n50_warn_bp": 100000,
+      "contig_n50_note_bp": 1000000,
+      "short_scaffold_length_bp": 10000,
+      "short_scaffold_fraction_warn": 0.1,
+      "num_sequences_note": 1000
+    },
+    "gaps": {
+      "min_gap_len": 10,
+      "gaps_per_100kbp_note": 5.0,
+      "gap_fraction_warn": 0.05
+    },
+    "telomere": {
+      "chromosome_min_length_bp": 1000000,
+      "both_ends_fraction_note": 0.9,
+      "any_end_fraction_warn": 0.5,
+      "tidk_min_window_count": 50,
+      "tidk_terminal_windows": 2
+    },
+    "contamination": {
+      "flag_actions": [
+        "EXCLUDE",
+        "TRIM"
+      ],
+      "review_actions": [
+        "REVIEW",
+        "FIX"
+      ],
+      "kraken_taxon_flag_pct": 1.0,
+      "flagged_bases_flag": 100000
+    },
+    "report": {
+      "title": "AsmQC report",
+      "max_seqs_in_plots": 200,
+      "figure_dpi": 110
+    }
+  },
+  "warnings": [],
+  "assembly_stats": {
+    "source": "gfastats",
+    "total_length": 3453847770,
+    "num_sequences": 337188,
+    "num_scaffolds": 337188,
+    "num_contigs": 492902,
+    "n50": 401181,
+    "n90": null,
+    "l50": 2384,
+    "l90": null,
+    "contig_n50": 38165,
+    "auN": null,
+    "largest": 10500000,
+    "smallest": 200,
+    "mean_length": 10243.09,
+    "median_length": null,
+    "gc_percent": 41.0,
+    "gap_count": 155714,
+    "gap_bases": 43847770,
+    "n_per_100kbp": 1269.53,
+    "num_short_seqs": 0,
+    "short_seq_threshold": 0
+  },
+  "busco": {
+    "complete_pct": 86.2,
+    "single_pct": 85.0,
+    "duplicated_pct": 1.2,
+    "fragmented_pct": 7.5,
+    "missing_pct": 6.34,
+    "complete_n": 11874,
+    "single_n": 11709,
+    "duplicated_n": 165,
+    "fragmented_n": 1033,
+    "missing_n": 873,
+    "total_n": 13780,
+    "lineage": "primates_odb10",
+    "mode": "genome",
+    "busco_version": "5.4.3",
+    "summary_line": "C:86.2%[S:85.0%,D:1.20%],F:7.50%,M:6.34%,n:13780"
+  },
+  "merqury": null,
+  "telomere": null,
+  "contamination": null,
+  "flags": [
+    {
+      "id": "busco_completeness",
+      "severity": "FLAG",
+      "severity_rank": 4,
+      "title": "Low BUSCO completeness",
+      "category": "completeness",
+      "message": "BUSCO complete is 86.2% (primates_odb10), below the 90% flag threshold \u2014 expected genes are missing or broken.",
+      "explanation": "A low Complete percentage means expected single-copy genes are not found intact in the assembly. Causes: genuinely missing sequence (low coverage, collapsed repeats), genes broken across contig boundaries, or \u2014 for distant lineages \u2014 real biological gene loss. High Missing+Fragmented usually points to a fragmented or incomplete assembly rather than biology.",
+      "action": "Check coverage and k-mer completeness (Merqury) to see if sequence is missing; consider additional long-read data or a re-assembly. Confirm the BUSCO lineage dataset is appropriate for the species before concluding genes are truly absent.",
+      "metric": "BUSCO complete %",
+      "evidence": {
+        "complete_pct": 86.2,
+        "warn": 95.0,
+        "flag": 90.0
+      }
+    },
+    {
+      "id": "busco_fragmented",
+      "severity": "WARN",
+      "severity_rank": 3,
+      "title": "Many fragmented BUSCOs",
+      "category": "completeness",
+      "message": "BUSCO fragmented is 7.5% (primates_odb10) (>= 5%) \u2014 genes broken across contig boundaries; tracks low contiguity.",
+      "explanation": "Fragmented BUSCOs are found only partially \u2014 typically a gene split across two contigs/scaffolds because the assembly breaks inside it. This tracks low contiguity: short contigs interrupt gene models.",
+      "action": "Improve contiguity (long-read scaffolding, gap filling). Fragmentation usually falls as contig N50 rises; re-evaluate after scaffolding.",
+      "metric": "BUSCO fragmented %",
+      "evidence": {
+        "fragmented_pct": 7.5,
+        "threshold": 5.0
+      }
+    },
+    {
+      "id": "busco_missing",
+      "severity": "WARN",
+      "severity_rank": 3,
+      "title": "Many missing BUSCOs",
+      "category": "completeness",
+      "message": "BUSCO missing is 6.3% (primates_odb10) (>= 5%).",
+      "explanation": "Missing BUSCOs are not detected at all. Combined with low completeness this indicates absent sequence; alone it can also reflect an over-stringent or mismatched lineage dataset.",
+      "action": "Verify the lineage dataset, then investigate coverage gaps. Persistent high Missing after good coverage suggests real dropout regions to target with additional data.",
+      "metric": "BUSCO missing %",
+      "evidence": {
+        "missing_pct": 6.34,
+        "threshold": 5.0
+      }
+    },
+    {
+      "id": "contiguity_contig_n50",
+      "severity": "WARN",
+      "severity_rank": 3,
+      "title": "Low contig N50",
+      "category": "contiguity",
+      "message": "Contig N50 is 38.2 kb, below 100.0 kb \u2014 the underlying contigs are short.",
+      "explanation": "Contig N50 measures the underlying contiguity before scaffolding (gaps removed). Short contigs mean the primary assembly is broken \u2014 usually short or noisy reads, or unresolved repeats. Scaffolding can join these but cannot recover the missing sequence in the gaps.",
+      "action": "Prefer long high-accuracy reads (PacBio HiFi / ONT) and re-assemble; contig N50 is set at the contigging stage, not by scaffolding.",
+      "metric": "Contig N50",
+      "evidence": {
+        "contig_n50": 38165,
+        "warn": 100000,
+        "note": 1000000
+      }
+    },
+    {
+      "id": "contiguity_scaffold_n50",
+      "severity": "WARN",
+      "severity_rank": 3,
+      "title": "Low scaffold N50 (fragmented)",
+      "category": "contiguity",
+      "message": "Scaffold N50 is 401.2 kb, below 1.00 Mb \u2014 a fragmented draft, not chromosome-scale.",
+      "explanation": "Scaffold N50 summarises how long the scaffolds are: half the genome sits in scaffolds at least this long. A low value means the assembly has not reached chromosome scale \u2014 it is a fragmented draft rather than a reference. The EBP target is chromosome-scale scaffolds (often 10 Mb+ N50).",
+      "action": "Add long-range information (Hi-C, optical maps, or linkage) to scaffold contigs into chromosomes, then re-assess. Confirm against the expected karyotype.",
+      "metric": "Scaffold N50",
+      "evidence": {
+        "scaffold_n50": 401181,
+        "warn": 1000000,
+        "note": 10000000
+      }
+    },
+    {
+      "id": "contiguity_many_sequences",
+      "severity": "NOTE",
+      "severity_rank": 2,
+      "title": "Very many sequences",
+      "category": "contiguity",
+      "message": "The assembly has 337,188 sequences (>= 1,000).",
+      "explanation": "The assembly contains a very large number of sequences for its size. On its own this is a smell rather than a verdict, but it usually accompanies fragmentation, retained haplotigs, or contaminant contigs.",
+      "action": "Cross-check with the fragmentation, duplication and contamination flags; reduce the unplaced/short fraction during curation.",
+      "metric": "sequence count",
+      "evidence": {
+        "num_sequences": 337188,
+        "threshold": 1000
+      }
+    }
+  ]
+}

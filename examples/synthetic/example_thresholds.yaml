@@ -1,0 +1,9 @@
+# Thresholds scaled down for the miniature example genome.
+contiguity:
+  scaffold_n50_warn_bp: 20000
+  scaffold_n50_note_bp: 80000
+  contig_n50_warn_bp: 10000
+  contig_n50_note_bp: 50000
+  short_scaffold_length_bp: 5000
+telomere:
+  chromosome_min_length_bp: 30000

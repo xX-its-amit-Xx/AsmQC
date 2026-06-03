@@ -1,0 +1,118 @@
+# AsmQC default configuration / curation thresholds.
+#
+# Every number here is a knob for the curation-flag engine.  Copy this file with
+# `asmqc init-config > my_thresholds.yaml`, edit it, and pass it with
+# `asmqc run --config my_thresholds.yaml ...`.  Anything you omit falls back to
+# these defaults (the file is deep-merged over the built-in defaults).
+#
+# Thresholds are grounded in the Earth BioGenome Project (EBP) metric standard
+# and the Vertebrate Genomes Project (VGP) "3C" framework: Contiguity,
+# Completeness, Correctness.  The EBP notation "x.y.QV" means:
+#   x  = log10(contig N50)        e.g. 6 -> contig N50 >= 1 Mb,  7 -> >= 10 Mb
+#   y  = log10(scaffold N50)      e.g. 7 -> scaffold N50 >= 10 Mb
+#   QV = Merqury consensus QV     e.g. Q40 -> >= 99.99% base accuracy
+# The reference "EBP standard" assembly is 6.7.Q40 (contig N50 >=1Mb,
+# scaffold N50 >=10Mb, QV>=40), reaching 7.C.Q50 for the best vertebrate genomes.
+
+# Whether each flag family is enabled.  Disable a noisy check by setting false.
+enabled:
+  busco: true
+  merqury: true
+  contiguity: true
+  gaps: true
+  telomere: true
+  contamination: true
+
+# ----------------------------------------------------------------------------
+# BUSCO -- single-copy ortholog completeness (the "Completeness" C).
+# Percentages are of total BUSCO groups in the lineage.
+# ----------------------------------------------------------------------------
+busco:
+  # Complete (C = S + D) below this -> the assembly is missing expected genes.
+  complete_warn_pct: 95.0      # EBP/VGP aspire to >= 95% complete
+  complete_flag_pct: 90.0      # below 90% complete is a real completeness problem
+  # Duplicated single-copy orthologs.  In a haploid representation these should
+  # be rare; an excess signals retained haplotigs / failed purge_dups.
+  duplicated_warn_pct: 5.0
+  duplicated_flag_pct: 10.0
+  # Missing / Fragmented high -> genes truly absent or broken across contigs.
+  missing_warn_pct: 5.0
+  fragmented_warn_pct: 5.0
+
+# ----------------------------------------------------------------------------
+# Merqury -- reference-free k-mer QV and k-mer completeness (the "Correctness" C).
+# ----------------------------------------------------------------------------
+merqury:
+  # Consensus quality value.  Q40 = 1 error / 10 kb = 99.99% accuracy (EBP bar).
+  qv_warn: 40.0
+  qv_flag: 30.0      # Q30 = 1 error / 1 kb = 99.9% -- clearly below standard
+  # k-mer completeness: fraction of reliable read k-mers present in the assembly.
+  completeness_warn_pct: 90.0
+
+# ----------------------------------------------------------------------------
+# Contiguity -- N50/length structure (the "Contiguity" C).
+# Absolute N50 targets are genome-size dependent; these are sensible defaults
+# for vertebrate-scale genomes.  Override per project.
+# ----------------------------------------------------------------------------
+contiguity:
+  scaffold_n50_warn_bp: 1000000      # < 1 Mb scaffold N50 -> fragmented draft
+  scaffold_n50_note_bp: 10000000     # < 10 Mb -> below EBP "y=7" chromosome target
+  contig_n50_warn_bp: 100000         # < 100 kb contig N50 -> short underlying contigs
+  contig_n50_note_bp: 1000000        # < 1 Mb -> below EBP "x=6" contig target
+  # Sequences shorter than this count as "short scaffolds".
+  short_scaffold_length_bp: 10000
+  # If more than this FRACTION of total assembly length sits in short scaffolds,
+  # the assembly is fragmented / full of debris.
+  short_scaffold_fraction_warn: 0.10
+  # A very large number of sequences for the genome size is itself a smell.
+  num_sequences_note: 1000
+
+# ----------------------------------------------------------------------------
+# Gaps -- runs of N introduced during scaffolding.
+# ----------------------------------------------------------------------------
+gaps:
+  # A run of at least this many N's counts as one assembly gap.
+  min_gap_len: 10
+  # Gap density (gaps per 100 kb) above this is worth a note.
+  gaps_per_100kbp_note: 5.0
+  # Fraction of the assembly that is N's, above which to warn.
+  gap_fraction_warn: 0.05
+
+# ----------------------------------------------------------------------------
+# Telomeres -- tidk repeat detection.  Used to judge T2T completeness.
+# ----------------------------------------------------------------------------
+telomere:
+  # Only sequences at least this long are treated as putative chromosomes when
+  # judging telomere completeness (avoids penalising small unplaced contigs).
+  chromosome_min_length_bp: 1000000
+  # If fewer than this fraction of chromosome-scale scaffolds have telomeres at
+  # BOTH ends, note that the assembly is not yet T2T.
+  both_ends_fraction_note: 0.90
+  # If fewer than this fraction have a telomere at ANY end, warn.
+  any_end_fraction_warn: 0.50
+  # tidk: a terminal window whose motif count reaches this is "a telomere".
+  tidk_min_window_count: 50
+  # How many windows at each end of a scaffold count as "terminal".
+  tidk_terminal_windows: 2
+
+# ----------------------------------------------------------------------------
+# Contamination -- FCS-GX / Kraken2.
+# ----------------------------------------------------------------------------
+contamination:
+  # FCS actions that should raise a flag (others are informational).
+  flag_actions: ["EXCLUDE", "TRIM"]
+  review_actions: ["REVIEW", "FIX"]
+  # Kraken: a non-host taxon above this percent of classified reads -> flag.
+  kraken_taxon_flag_pct: 1.0
+  # Total contaminant span (bp) above this -> escalate severity.
+  flagged_bases_flag: 100000
+
+# ----------------------------------------------------------------------------
+# Reporting / plots
+# ----------------------------------------------------------------------------
+report:
+  title: "AsmQC report"
+  # Max sequences to draw individually on the telomere map / cumulative curve.
+  max_seqs_in_plots: 200
+  # DPI for embedded matplotlib figures.
+  figure_dpi: 110

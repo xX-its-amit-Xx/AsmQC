@@ -1,0 +1,13 @@
+# BUSCO version is: 5.4.3
+# The lineage dataset is: aves_odb10 (Creation date: 2024-01-08, number of genomes: 50, number of BUSCOs: 8338)
+# BUSCO was run in mode: genome
+
+	***** Results: *****
+
+	C:96.4%[S:90.1%,D:6.3%],F:1.6%,M:2.0%,n:8338
+	8038	Complete BUSCOs (C)
+	7513	Complete and single-copy BUSCOs (S)
+	525	Complete and duplicated BUSCOs (D)
+	133	Fragmented BUSCOs (F)
+	167	Missing BUSCOs (M)
+	8338	Total BUSCO groups searched

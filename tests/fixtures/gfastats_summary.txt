@@ -1,0 +1,30 @@
+tests/fixtures/asm.fasta
+embedded
++++Assembly summary+++:
+# scaffolds: 164
+Total scaffold length: 1026755127
+Average scaffold length: 6260701.99
+Scaffold N50: 71229700
+Scaffold auN: 74000000.50
+Scaffold L50: 5
+Largest scaffold: 91234567
+Smallest scaffold: 2500
+# contigs: 374
+Total contig length: 1026683190
+Average contig length: 2745142.22
+Contig N50: 17905263
+Contig auN: 19000000.00
+Contig L50: 19
+Largest contig: 45000000
+Smallest contig: 1000
+# gaps in scaffolds: 210
+Total gap length in scaffolds: 71937
+Average gap length in scaffolds: 342.55
+Gap N50 in scaffolds: 500
+Base composition (A:C:G:T): 300000000:213000000:213000000:300000000
+GC content %: 41.50
+# soft-masked bases: 0
+# segments: 374
+Total segment length: 1026683190
+# gaps: 210
+# paths: 164

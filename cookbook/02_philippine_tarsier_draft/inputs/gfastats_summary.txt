@@ -1,0 +1,19 @@
+assembly.fasta
+embedded
++++Assembly summary+++:
+# scaffolds: 337188
+Total scaffold length: 3453847770
+Average scaffold length: 10243.09
+Scaffold N50: 401181
+Scaffold L50: 2384
+Largest scaffold: 10500000
+Smallest scaffold: 200
+# contigs: 492902
+Total contig length: 3410000000
+Average contig length: 6918.21
+Contig N50: 38165
+Contig L50: 23500
+# gaps in scaffolds: 155714
+Total gap length in scaffolds: 43847770
+GC content %: 41.0
+# soft-masked bases: 0

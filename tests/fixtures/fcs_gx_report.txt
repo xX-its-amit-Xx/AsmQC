@@ -1,0 +1,5 @@
+##[["FCS genome report", 2, 1], {"git-rev": "v0.5.4", "run-date": "Mon Aug  5 13:47:56 2024", "db": {"build-date": "2023-01-24", "seqs": 3025824}}]
+#seq_id	start_pos	end_pos	seq_len	action	div	agg_cont_cov	top_tax_name
+contig_017	1	76092	76092	EXCLUDE	prok:a-proteobacteria	15	Ponticoccus marisrubri
+contig_042	500	2300	18000	TRIM	prok:CFB-group-bacteria	8	Flavobacterium sp.
+contig_055	1	1200	1200	REVIEW	euk:fungi	3	Saccharomyces sp.

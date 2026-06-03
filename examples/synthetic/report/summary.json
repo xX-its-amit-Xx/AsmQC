@@ -1,0 +1,305 @@
+{
+  "asmqc_version": "0.1.0",
+  "generated_at": "2026-06-03 06:42:21 UTC",
+  "assembly_name": "example_bird_v1",
+  "overall_status": "FLAG",
+  "flag_counts": {
+    "PASS": 1,
+    "INFO": 0,
+    "NOTE": 1,
+    "WARN": 2,
+    "FLAG": 1,
+    "FAIL": 0
+  },
+  "inputs": {
+    "busco": "examples/synthetic/inputs/short_summary.txt",
+    "merqury": "examples/synthetic/inputs/merqury",
+    "tidk": "examples/synthetic/inputs/asm_telomeric_repeat_windows.tsv",
+    "contamination": "examples/synthetic/inputs/assembly.fcs_gx_report.txt",
+    "fasta": "examples/synthetic/inputs/assembly.fasta"
+  },
+  "config": {
+    "enabled": {
+      "busco": true,
+      "merqury": true,
+      "contiguity": true,
+      "gaps": true,
+      "telomere": true,
+      "contamination": true
+    },
+    "busco": {
+      "complete_warn_pct": 95.0,
+      "complete_flag_pct": 90.0,
+      "duplicated_warn_pct": 5.0,
+      "duplicated_flag_pct": 10.0,
+      "missing_warn_pct": 5.0,
+      "fragmented_warn_pct": 5.0
+    },
+    "merqury": {
+      "qv_warn": 40.0,
+      "qv_flag": 30.0,
+      "completeness_warn_pct": 90.0
+    },
+    "contiguity": {
+      "scaffold_n50_warn_bp": 20000,
+      "scaffold_n50_note_bp": 80000,
+      "contig_n50_warn_bp": 10000,
+      "contig_n50_note_bp": 50000,
+      "short_scaffold_length_bp": 5000,
+      "short_scaffold_fraction_warn": 0.1,
+      "num_sequences_note": 1000
+    },
+    "gaps": {
+      "min_gap_len": 10,
+      "gaps_per_100kbp_note": 5.0,
+      "gap_fraction_warn": 0.05
+    },
+    "telomere": {
+      "chromosome_min_length_bp": 30000,
+      "both_ends_fraction_note": 0.9,
+      "any_end_fraction_warn": 0.5,
+      "tidk_min_window_count": 50,
+      "tidk_terminal_windows": 2
+    },
+    "contamination": {
+      "flag_actions": [
+        "EXCLUDE",
+        "TRIM"
+      ],
+      "review_actions": [
+        "REVIEW",
+        "FIX"
+      ],
+      "kraken_taxon_flag_pct": 1.0,
+      "flagged_bases_flag": 100000
+    },
+    "report": {
+      "title": "AsmQC report",
+      "max_seqs_in_plots": 200,
+      "figure_dpi": 110
+    }
+  },
+  "warnings": [],
+  "assembly_stats": {
+    "source": "fasta",
+    "total_length": 438327,
+    "num_sequences": 26,
+    "num_scaffolds": 26,
+    "num_contigs": 28,
+    "n50": 100700,
+    "n90": 40000,
+    "l50": 2,
+    "l90": 5,
+    "contig_n50": 60000,
+    "auN": 82659.24,
+    "largest": 120000,
+    "smallest": 805,
+    "mean_length": 16858.73,
+    "median_length": 1884,
+    "gc_percent": 42.44,
+    "gap_count": 2,
+    "gap_bases": 700,
+    "n_per_100kbp": 159.7,
+    "num_short_seqs": 20,
+    "short_seq_threshold": 5000
+  },
+  "busco": {
+    "complete_pct": 96.4,
+    "single_pct": 90.1,
+    "duplicated_pct": 6.3,
+    "fragmented_pct": 1.6,
+    "missing_pct": 2.0,
+    "complete_n": 8038,
+    "single_n": 7513,
+    "duplicated_n": 525,
+    "fragmented_n": 133,
+    "missing_n": 167,
+    "total_n": 8338,
+    "lineage": "aves_odb10",
+    "mode": "genome",
+    "busco_version": "5.4.3",
+    "summary_line": "C:96.4%[S:90.1%,D:6.3%],F:1.6%,M:2.0%,n:8338"
+  },
+  "merqury": {
+    "qv": 38.6,
+    "error_rate": 0.000138,
+    "completeness_pct": 96.1,
+    "kmers_asm_only": 251000,
+    "kmers_total": 410000000,
+    "kmer_size": null,
+    "assembly_label": "asm",
+    "per_assembly_qv": {
+      "asm": 38.6
+    },
+    "has_spectra": true,
+    "n_spectra_points": 316
+  },
+  "telomere": {
+    "repeat_motif": "TTAGGG",
+    "window_size": 10000,
+    "n_scaffolds": 5,
+    "n_with_any_telomere": 4,
+    "n_with_both_telomeres": 3,
+    "chromosome_min_length": 30000,
+    "scaffolds": [
+      {
+        "name": "chr1",
+        "length": 120000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 410,
+        "end_repeats": 395,
+        "total_repeats": 805
+      },
+      {
+        "name": "chr2",
+        "length": 100000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 410,
+        "end_repeats": 395,
+        "total_repeats": 805
+      },
+      {
+        "name": "chr3",
+        "length": 80000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 410,
+        "end_repeats": 395,
+        "total_repeats": 805
+      },
+      {
+        "name": "chr4",
+        "length": 60000,
+        "start_telomere": true,
+        "end_telomere": false,
+        "both_ends": false,
+        "start_repeats": 410,
+        "end_repeats": 0,
+        "total_repeats": 410
+      },
+      {
+        "name": "chr5",
+        "length": 40000,
+        "start_telomere": false,
+        "end_telomere": false,
+        "both_ends": false,
+        "start_repeats": 0,
+        "end_repeats": 0,
+        "total_repeats": 0
+      }
+    ]
+  },
+  "contamination": {
+    "source": "fcs",
+    "n_hits": 1,
+    "n_sequences_flagged": 1,
+    "total_flagged_bases": 6000,
+    "unclassified_pct": null,
+    "top_taxa": {},
+    "hits": [
+      {
+        "seq_id": "contig_bact01",
+        "action": "EXCLUDE",
+        "start": 1,
+        "end": 6000,
+        "seq_len": 6000,
+        "taxon": "Bradyrhizobium sp.",
+        "tax_id": null,
+        "coverage": 18.0,
+        "note": "prok:a-proteobacteria"
+      }
+    ]
+  },
+  "flags": [
+    {
+      "id": "contamination_fcs",
+      "severity": "FLAG",
+      "severity_rank": 4,
+      "title": "FCS-GX flagged contamination",
+      "category": "contamination",
+      "message": "FCS-GX flagged 1 region(s) across 1 sequence(s), 6,000 bp (6.0 kb) for removal/trim; top taxa: Bradyrhizobium sp..",
+      "explanation": "NCBI FCS-GX flagged sequence whose best taxonomic match is a foreign organism (bacteria, other host, adaptor, organelle in the wrong place). EXCLUDE/TRIM actions are high-confidence foreign sequence that NCBI would remove before release; it often hides in small, low-coverage contigs.",
+      "action": "Remove EXCLUDE sequences and TRIM the flagged spans (the GFF/BED export marks exact coordinates). Re-run FCS after cleaning and confirm no on-target sequence was lost. REVIEW calls need a manual look.",
+      "metric": "FCS-GX action",
+      "evidence": {
+        "n_flagged": 1,
+        "total_flagged_bases": 6000,
+        "n_sequences_flagged": 1,
+        "actions": [
+          "EXCLUDE"
+        ],
+        "large": false
+      }
+    },
+    {
+      "id": "busco_duplication",
+      "severity": "WARN",
+      "severity_rank": 3,
+      "title": "Elevated BUSCO duplication",
+      "category": "completeness",
+      "message": "BUSCO duplicated is 6.3% (aves_odb10), above the 5% warning threshold \u2014 possible haplotype duplication.",
+      "explanation": "BUSCO looks for genes that should occur exactly once in this lineage. When many of them appear twice, the assembly is probably carrying both haplotypes of a diploid genome in the same (supposedly haploid) set of sequences \u2014 i.e. uncollapsed 'haplotigs' / false duplications. A truly duplicated region (recent whole-genome duplication) is possible but rarer.",
+      "action": "Run purge_dups (or purge_haplotigs) to collapse retained haplotigs into a primary haplotype, then re-check BUSCO duplication and the Merqury copy-number spectrum (the read-only/2-copy peaks). If duplication is biological, document the expected ploidy/WGD.",
+      "metric": "BUSCO duplicated %",
+      "evidence": {
+        "duplicated_pct": 6.3,
+        "threshold": 5.0
+      }
+    },
+    {
+      "id": "merqury_qv",
+      "severity": "WARN",
+      "severity_rank": 3,
+      "title": "Consensus accuracy below standard",
+      "category": "correctness",
+      "message": "Merqury QV is 38.6, below the Q40 EBP standard (Q40 = 99.99% / 1 error per 10 kb).",
+      "explanation": "Merqury's QV is a reference-free estimate of per-base consensus accuracy from k-mers that appear in the assembly but not the reads (assumed errors). A low QV means residual base-level errors \u2014 common with noisy long reads that were not polished, or under-polished consensus. Q40 \u2248 1 error / 10 kb (the EBP standard); below Q30 most genes will carry a base error.",
+      "action": "Polish the consensus (e.g. with the HiFi reads via DeepVariant/racon/medaka as appropriate) and re-run Merqury. Check the k-mer spectrum for a residual error peak at low multiplicity.",
+      "metric": "Merqury QV",
+      "evidence": {
+        "qv": 38.6,
+        "warn": 40.0,
+        "flag": 30.0
+      }
+    },
+    {
+      "id": "telomere_t2t",
+      "severity": "NOTE",
+      "severity_rank": 2,
+      "title": "Not telomere-to-telomere",
+      "category": "completeness",
+      "message": "3/5 chromosome-scale scaffolds are telomere-capped at BOTH ends (60%) (motif TTAGGG); 90% needed for a T2T claim.",
+      "explanation": "Telomeric repeat arrays were not detected at both ends of most chromosome-scale scaffolds. That means the assembly is not yet telomere-to-telomere: some chromosome ends are missing or unresolved (telomeres are highly repetitive and hard to assemble). This is expected for most non-T2T assemblies and is a 'note', not a failure.",
+      "action": "If T2T completeness is a goal, target the missing ends with ultra-long reads and verify with the telomere map. Otherwise record which chromosomes are arm-to-arm complete.",
+      "metric": "telomere completeness",
+      "evidence": {
+        "n_chromosomes": 5,
+        "n_both_ends": 3,
+        "n_any_end": 4,
+        "both_fraction": 0.6,
+        "any_fraction": 0.8
+      }
+    },
+    {
+      "id": "contiguity_scaffold_n50",
+      "severity": "PASS",
+      "severity_rank": 0,
+      "title": "Scaffold N50 OK",
+      "category": "contiguity",
+      "message": "Scaffold N50 is 100.7 kb (>= 80.0 kb).",
+      "explanation": "This metric meets the configured quality standard.",
+      "action": "No action required.",
+      "metric": "Scaffold N50",
+      "evidence": {
+        "scaffold_n50": 100700,
+        "warn": 20000,
+        "note": 80000
+      }
+    }
+  ]
+}

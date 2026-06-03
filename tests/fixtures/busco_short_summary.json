@@ -1,0 +1,30 @@
+{
+    "parameters": {
+        "mode": "genome",
+        "lineage_dataset": "/db/primates_odb10"
+    },
+    "lineage_dataset": {
+        "name": "primates_odb10",
+        "creation_date": "2024-01-08",
+        "number_of_buscos": "13780",
+        "number_of_species": "24"
+    },
+    "versions": {
+        "busco": "6.0.0"
+    },
+    "results": {
+        "one_line_summary": "C:97.6%[S:95.0%,D:2.6%],F:1.4%,M:1.0%,n:13780",
+        "Complete percentage": 97.6,
+        "Complete BUSCOs": 13449,
+        "Single copy percentage": 95.0,
+        "Single copy BUSCOs": 13091,
+        "Multi copy percentage": 2.6,
+        "Multi copy BUSCOs": 358,
+        "Fragmented percentage": 1.4,
+        "Fragmented BUSCOs": 193,
+        "Missing percentage": 1.0,
+        "Missing BUSCOs": 138,
+        "n_markers": 13780,
+        "domain": "eukaryota"
+    }
+}

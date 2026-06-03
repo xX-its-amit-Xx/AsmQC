@@ -1,0 +1,463 @@
+{
+  "asmqc_version": "0.1.0",
+  "generated_at": "2026-06-03 06:42:22 UTC",
+  "assembly_name": "Lagopus_muta_bLagMut1 (GCA_023343835.1)",
+  "overall_status": "NOTE",
+  "flag_counts": {
+    "PASS": 3,
+    "INFO": 0,
+    "NOTE": 1,
+    "WARN": 0,
+    "FLAG": 0,
+    "FAIL": 0
+  },
+  "inputs": {
+    "gfastats": "cookbook/01_rock_ptarmigan_good/inputs/gfastats_summary.txt",
+    "busco": "cookbook/01_rock_ptarmigan_good/inputs/short_summary.specific.aves_odb10.txt",
+    "merqury": "cookbook/01_rock_ptarmigan_good/inputs/merqury",
+    "tidk": "cookbook/01_rock_ptarmigan_good/inputs/bLagMut1_telomeric_repeat_windows.tsv"
+  },
+  "config": {
+    "enabled": {
+      "busco": true,
+      "merqury": true,
+      "contiguity": true,
+      "gaps": true,
+      "telomere": true,
+      "contamination": true
+    },
+    "busco": {
+      "complete_warn_pct": 95.0,
+      "complete_flag_pct": 90.0,
+      "duplicated_warn_pct": 5.0,
+      "duplicated_flag_pct": 10.0,
+      "missing_warn_pct": 5.0,
+      "fragmented_warn_pct": 5.0
+    },
+    "merqury": {
+      "qv_warn": 40.0,
+      "qv_flag": 30.0,
+      "completeness_warn_pct": 90.0
+    },
+    "contiguity": {
+      "scaffold_n50_warn_bp": 1000000,
+      "scaffold_n50_note_bp": 10000000,
+      "contig_n50_warn_bp": 100000,
+      "contig_n50_note_bp": 1000000,
+      "short_scaffold_length_bp": 10000,
+      "short_scaffold_fraction_warn": 0.1,
+      "num_sequences_note": 1000
+    },
+    "gaps": {
+      "min_gap_len": 10,
+      "gaps_per_100kbp_note": 5.0,
+      "gap_fraction_warn": 0.05
+    },
+    "telomere": {
+      "chromosome_min_length_bp": 1000000,
+      "both_ends_fraction_note": 0.9,
+      "any_end_fraction_warn": 0.5,
+      "tidk_min_window_count": 50,
+      "tidk_terminal_windows": 2
+    },
+    "contamination": {
+      "flag_actions": [
+        "EXCLUDE",
+        "TRIM"
+      ],
+      "review_actions": [
+        "REVIEW",
+        "FIX"
+      ],
+      "kraken_taxon_flag_pct": 1.0,
+      "flagged_bases_flag": 100000
+    },
+    "report": {
+      "title": "AsmQC report",
+      "max_seqs_in_plots": 200,
+      "figure_dpi": 110
+    }
+  },
+  "warnings": [],
+  "assembly_stats": {
+    "source": "gfastats",
+    "total_length": 1026755127,
+    "num_sequences": 164,
+    "num_scaffolds": 164,
+    "num_contigs": 374,
+    "n50": 71229700,
+    "n90": null,
+    "l50": 5,
+    "l90": null,
+    "contig_n50": 17905263,
+    "auN": null,
+    "largest": 91234567,
+    "smallest": 2500,
+    "mean_length": 6260701.99,
+    "median_length": null,
+    "gc_percent": 41.5,
+    "gap_count": 210,
+    "gap_bases": 71937,
+    "n_per_100kbp": 7.01,
+    "num_short_seqs": 0,
+    "short_seq_threshold": 0
+  },
+  "busco": {
+    "complete_pct": 98.9,
+    "single_pct": 98.6,
+    "duplicated_pct": 0.29,
+    "fragmented_pct": 0.19,
+    "missing_pct": 0.91,
+    "complete_n": 8246,
+    "single_n": 8222,
+    "duplicated_n": 24,
+    "fragmented_n": 16,
+    "missing_n": 76,
+    "total_n": 8338,
+    "lineage": "aves_odb10",
+    "mode": "genome",
+    "busco_version": "5.4.3",
+    "summary_line": "C:98.9%[S:98.6%,D:0.29%],F:0.19%,M:0.91%,n:8338"
+  },
+  "merqury": {
+    "qv": 43.2,
+    "error_rate": 4.79e-05,
+    "completeness_pct": 99.41,
+    "kmers_asm_only": 38500,
+    "kmers_total": 410500000,
+    "kmer_size": null,
+    "assembly_label": "bLagMut1",
+    "per_assembly_qv": {
+      "bLagMut1": 43.2
+    },
+    "has_spectra": false,
+    "n_spectra_points": 0
+  },
+  "telomere": {
+    "repeat_motif": "AACCCT",
+    "window_size": 500000,
+    "n_scaffolds": 25,
+    "n_with_any_telomere": 23,
+    "n_with_both_telomeres": 19,
+    "chromosome_min_length": 1000000,
+    "scaffolds": [
+      {
+        "name": "chr1",
+        "length": 195000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr2",
+        "length": 152000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr3",
+        "length": 113000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr4",
+        "length": 91000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr5",
+        "length": 71000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr6",
+        "length": 38000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr7",
+        "length": 37000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr8",
+        "length": 31000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr9",
+        "length": 28000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr10",
+        "length": 25000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr11",
+        "length": 22000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr12",
+        "length": 21000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr13",
+        "length": 20000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr14",
+        "length": 19000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr15",
+        "length": 18000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr16",
+        "length": 15000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr17",
+        "length": 14000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr18",
+        "length": 13000000,
+        "start_telomere": true,
+        "end_telomere": false,
+        "both_ends": false,
+        "start_repeats": 415,
+        "end_repeats": 0,
+        "total_repeats": 415
+      },
+      {
+        "name": "chr19",
+        "length": 12000000,
+        "start_telomere": true,
+        "end_telomere": false,
+        "both_ends": false,
+        "start_repeats": 415,
+        "end_repeats": 0,
+        "total_repeats": 415
+      },
+      {
+        "name": "chr20",
+        "length": 11000000,
+        "start_telomere": false,
+        "end_telomere": true,
+        "both_ends": false,
+        "start_repeats": 0,
+        "end_repeats": 402,
+        "total_repeats": 402
+      },
+      {
+        "name": "chr21",
+        "length": 8000000,
+        "start_telomere": true,
+        "end_telomere": false,
+        "both_ends": false,
+        "start_repeats": 415,
+        "end_repeats": 0,
+        "total_repeats": 415
+      },
+      {
+        "name": "chr22",
+        "length": 6000000,
+        "start_telomere": false,
+        "end_telomere": false,
+        "both_ends": false,
+        "start_repeats": 0,
+        "end_repeats": 0,
+        "total_repeats": 0
+      },
+      {
+        "name": "chr23",
+        "length": 5000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      },
+      {
+        "name": "chr24",
+        "length": 3000000,
+        "start_telomere": false,
+        "end_telomere": false,
+        "both_ends": false,
+        "start_repeats": 0,
+        "end_repeats": 0,
+        "total_repeats": 0
+      },
+      {
+        "name": "chr25",
+        "length": 2000000,
+        "start_telomere": true,
+        "end_telomere": true,
+        "both_ends": true,
+        "start_repeats": 415,
+        "end_repeats": 402,
+        "total_repeats": 817
+      }
+    ]
+  },
+  "contamination": null,
+  "flags": [
+    {
+      "id": "telomere_t2t",
+      "severity": "NOTE",
+      "severity_rank": 2,
+      "title": "Not telomere-to-telomere",
+      "category": "completeness",
+      "message": "19/25 chromosome-scale scaffolds are telomere-capped at BOTH ends (76%) (motif AACCCT); 90% needed for a T2T claim.",
+      "explanation": "Telomeric repeat arrays were not detected at both ends of most chromosome-scale scaffolds. That means the assembly is not yet telomere-to-telomere: some chromosome ends are missing or unresolved (telomeres are highly repetitive and hard to assemble). This is expected for most non-T2T assemblies and is a 'note', not a failure.",
+      "action": "If T2T completeness is a goal, target the missing ends with ultra-long reads and verify with the telomere map. Otherwise record which chromosomes are arm-to-arm complete.",
+      "metric": "telomere completeness",
+      "evidence": {
+        "n_chromosomes": 25,
+        "n_both_ends": 19,
+        "n_any_end": 23,
+        "both_fraction": 0.76,
+        "any_fraction": 0.92
+      }
+    },
+    {
+      "id": "busco_ok",
+      "severity": "PASS",
+      "severity_rank": 0,
+      "title": "BUSCO completeness OK",
+      "category": "completeness",
+      "message": "BUSCO complete 98.9% / duplicated 0.3% (aves_odb10) meets the configured standard.",
+      "explanation": "This metric meets the configured quality standard.",
+      "action": "No action required.",
+      "metric": "BUSCO",
+      "evidence": {
+        "complete_pct": 98.9
+      }
+    },
+    {
+      "id": "contiguity_scaffold_n50",
+      "severity": "PASS",
+      "severity_rank": 0,
+      "title": "Scaffold N50 OK",
+      "category": "contiguity",
+      "message": "Scaffold N50 is 71.23 Mb (>= 10.00 Mb).",
+      "explanation": "This metric meets the configured quality standard.",
+      "action": "No action required.",
+      "metric": "Scaffold N50",
+      "evidence": {
+        "scaffold_n50": 71229700,
+        "warn": 1000000,
+        "note": 10000000
+      }
+    },
+    {
+      "id": "merqury_qv",
+      "severity": "PASS",
+      "severity_rank": 0,
+      "title": "Consensus accuracy OK",
+      "category": "correctness",
+      "message": "Merqury QV 43.2 meets the Q40 standard.",
+      "explanation": "This metric meets the configured quality standard.",
+      "action": "No action required.",
+      "metric": "Merqury QV",
+      "evidence": {
+        "qv": 43.2,
+        "warn": 40.0,
+        "flag": 30.0
+      }
+    }
+  ]
+}

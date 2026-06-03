@@ -1,0 +1,11 @@
+##gff-version 3
+chr1	AsmQC	telomere	1	10000	410	.	.	ID=chr1_telomere_start;Name=chr1_telomere_start;flag_type=telomere;end=start;repeats=410
+chr1	AsmQC	telomere	110001	120000	395	.	.	ID=chr1_telomere_end;Name=chr1_telomere_end;flag_type=telomere;end=end;repeats=395
+chr2	AsmQC	telomere	1	10000	410	.	.	ID=chr2_telomere_start;Name=chr2_telomere_start;flag_type=telomere;end=start;repeats=410
+chr2	AsmQC	gap	30001	30200	.	.	.	ID=gap_1;Name=gap_1;flag_type=gap;length=200
+chr2	AsmQC	gap	60201	60700	.	.	.	ID=gap_2;Name=gap_2;flag_type=gap;length=500
+chr2	AsmQC	telomere	90001	100000	395	.	.	ID=chr2_telomere_end;Name=chr2_telomere_end;flag_type=telomere;end=end;repeats=395
+chr3	AsmQC	telomere	1	10000	410	.	.	ID=chr3_telomere_start;Name=chr3_telomere_start;flag_type=telomere;end=start;repeats=410
+chr3	AsmQC	telomere	70001	80000	395	.	.	ID=chr3_telomere_end;Name=chr3_telomere_end;flag_type=telomere;end=end;repeats=395
+chr4	AsmQC	telomere	1	10000	410	.	.	ID=chr4_telomere_start;Name=chr4_telomere_start;flag_type=telomere;end=start;repeats=410
+contig_bact01	AsmQC	contamination	1	6000	18	.	.	ID=EXCLUDE_1;Name=EXCLUDE_1;flag_type=contamination;action=EXCLUDE;taxon=Bradyrhizobium sp.;division=prok:a-proteobacteria

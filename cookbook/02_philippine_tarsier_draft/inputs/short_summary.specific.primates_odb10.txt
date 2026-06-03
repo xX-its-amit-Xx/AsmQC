@@ -1,0 +1,13 @@
+# BUSCO version is: 5.4.3
+# The lineage dataset is: primates_odb10 (Creation date: 2024-01-08, number of genomes: 50, number of BUSCOs: 13780)
+# BUSCO was run in mode: genome
+
+	***** Results: *****
+
+	C:86.2%[S:85.0%,D:1.20%],F:7.50%,M:6.34%,n:13780
+	11874	Complete BUSCOs (C)
+	11709	Complete and single-copy BUSCOs (S)
+	165	Complete and duplicated BUSCOs (D)
+	1033	Fragmented BUSCOs (F)
+	873	Missing BUSCOs (M)
+	13780	Total BUSCO groups searched
